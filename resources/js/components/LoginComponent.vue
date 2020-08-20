@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Login</div>
+                    <div class="card-header">Login - {{ var1 }}</div>
 
                     <div class="card-body">
                         <div class="form-group row">
@@ -52,9 +52,7 @@
             }
         },
         computed:{
-            combined(){
-                return this.login + this.password
-            }
+
         },
         methods: {
             sendLoginRequest() {
@@ -62,7 +60,7 @@
                 let password = this.password;
 
                 axios.post('/api/login', {login, password}).then((response) => {
-                    console.log(response.data.success)
+
                     if(response.data.success === true){
                         localStorage.setItem('api_token', response.data.data.api_token)
                         this.$router.push('/')
